@@ -8,3 +8,4 @@
 - Live matches are highlighted and include score details.
 - UI copy and team names are localized to Chinese.
 - Updated the local server to write the selected port to a file for launchers.
+- Added cleanup preference: helper apps opened during work should be backgrounded/minimized before handoff.
