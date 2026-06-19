@@ -26,7 +26,25 @@ py server_worldcup.py
 
 ## Deploy publicly
 
-This repo includes `render.yaml` for Render deployment.
+### GitHub Pages static version
+
+This repo now includes a root `index.html` for GitHub Pages.
+
+1. Go to GitHub repo Settings -> Pages.
+2. Source: `Deploy from a branch`.
+3. Branch: `main`, folder: `/ (root)`.
+4. Save.
+5. The public URL will be:
+
+```text
+https://liyanghusky.github.io/FIFA2026/
+```
+
+This static version fetches ESPN public endpoints directly in the browser.
+
+### Render web-service version
+
+This repo also includes `render.yaml` for Render deployment.
 
 1. Go to Render and create a new Blueprint or Web Service from this GitHub repo.
 2. Use the default branch, `main`.
