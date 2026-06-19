@@ -111,11 +111,204 @@
       font-size: 25px;
     }
 
+    .spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+      gap: 14px;
+      margin: 4px 0 18px;
+    }
+
+    .spot-card,
+    .story-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      backdrop-filter: blur(22px);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .spot-card {
+      min-height: 210px;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .spot-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(110deg, rgba(89,216,255,.16), transparent 36%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 58px);
+      opacity: .9;
+    }
+
+    .spot-main,
+    .spot-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .spot-label,
+    .story-label,
+    .quick-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 900;
+    }
+
+    .spot-title {
+      margin: 10px 0 0;
+      font-size: clamp(26px, 4vw, 54px);
+      line-height: .95;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .spot-meta {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .spot-teams {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .spot-team {
+      min-width: 0;
+      display: grid;
+      gap: 8px;
+      align-content: center;
+      justify-items: start;
+    }
+
+    .spot-team.home {
+      justify-items: end;
+      text-align: right;
+    }
+
+    .spot-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.34));
+    }
+
+    .spot-name {
+      font-size: 20px;
+      font-weight: 950;
+      line-height: 1.05;
+      overflow-wrap: anywhere;
+      max-width: 100%;
+    }
+
+    .spot-vs {
+      display: grid;
+      place-items: center;
+      min-width: 70px;
+      min-height: 70px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 50%;
+      color: var(--gold);
+      font-weight: 950;
+      font-size: 18px;
+    }
+
+    .spot-side {
+      min-width: 220px;
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 12px;
+    }
+
+    .countdown {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 950;
+      color: var(--gold);
+    }
+
+    .spot-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border-radius: 999px;
+      min-height: 30px;
+      padding: 0 11px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .story-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .story-card {
+      padding: 14px;
+      min-height: 100px;
+      display: grid;
+      align-content: space-between;
+      gap: 12px;
+    }
+
+    .story-value {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      align-items: center;
+    }
+
+    .timeline-row strong {
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .toolbar {
       display: grid;
       grid-template-columns: minmax(220px, 340px) 190px 190px auto;
       gap: 12px;
-      margin: 12px 0 18px;
+      margin: 12px 0 10px;
     }
 
     .control {
@@ -142,6 +335,32 @@
       padding: 0 16px;
       font-weight: 900;
       cursor: pointer;
+    }
+
+    .quick-filters {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+
+    .quick-chip {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .08);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0 13px;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .quick-chip.active {
+      color: #07101f;
+      background: var(--gold);
+      border-color: var(--gold);
     }
 
     .summary {
@@ -224,6 +443,24 @@
       padding: 14px;
       display: grid;
       gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .match::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(89,216,255,.1), transparent 38%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 34px);
+      opacity: .42;
+    }
+
+    .match.favorite {
+      border-color: color-mix(in srgb, var(--gold), white 18%);
+      box-shadow: inset 0 0 0 1px rgba(243, 201, 105, .26);
     }
 
     .match-top {
@@ -233,6 +470,35 @@
       gap: 12px;
       color: var(--muted);
       font-size: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .match-tools {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .star {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--muted);
+      border-radius: 8px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+    }
+
+    .star.active {
+      background: var(--gold);
+      color: #111827;
+      border-color: var(--gold);
     }
 
     .badge {
@@ -252,6 +518,8 @@
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       gap: 12px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .team {
@@ -290,6 +558,16 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
+      position: relative;
+      z-index: 1;
+    }
+
+    .match-footer {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     .tabs {
@@ -381,13 +659,29 @@
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, .075);
       border-radius: 8px;
-      min-height: 82px;
+      min-height: 108px;
       padding: 10px;
       display: grid;
       align-content: center;
       justify-items: center;
       gap: 8px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card.favorite {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(243,201,105,.16), rgba(255,255,255,.07));
+    }
+
+    .team-card .star {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      font-size: 12px;
     }
 
     .team-card img {
@@ -401,6 +695,12 @@
       overflow-wrap: anywhere;
     }
 
+    .team-card small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
     .empty, .loading {
       padding: 30px;
       color: var(--muted);
@@ -408,9 +708,14 @@
     }
 
     @media (max-width: 1080px) {
-      .hero, .layout, .toolbar { grid-template-columns: 1fr; }
+      .hero, .layout, .toolbar, .spotlight { grid-template-columns: 1fr; }
       .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .clock-card { min-width: 0; }
+      .spot-side {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding: 14px 0 0;
+      }
     }
 
     @media (max-width: 620px) {
@@ -419,6 +724,14 @@
       .teams { grid-template-columns: 1fr; }
       .team.away { justify-content: flex-start; text-align: left; }
       .score { text-align: left; }
+      .spot-card, .spot-teams { grid-template-columns: 1fr; }
+      .spot-team.home { justify-items: start; text-align: left; }
+      .spot-vs {
+        width: 54px;
+        min-width: 54px;
+        min-height: 54px;
+      }
+      .timeline-row { grid-template-columns: 1fr; }
       .layout { gap: 14px; }
     }
   </style>
@@ -438,6 +751,23 @@
       </aside>
     </section>
 
+    <section class="spotlight">
+      <article class="spot-card" id="spotlight">
+        <div class="loading">Loading next match...</div>
+      </article>
+      <aside class="story-stack">
+        <div class="story-card">
+          <div class="story-label">Favorites</div>
+          <strong class="story-value" id="favoriteCount">0</strong>
+          <div class="spot-actions" id="favoritePreview"></div>
+        </div>
+        <div class="story-card">
+          <div class="story-label">Upcoming timeline</div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </aside>
+    </section>
+
     <section class="toolbar">
       <input class="control" id="search" placeholder="Search team, venue, group">
       <select class="control" id="groupFilter">
@@ -450,6 +780,10 @@
         <option value="post">Finished</option>
       </select>
       <button class="refresh" id="refresh">Refresh tracker</button>
+    </section>
+
+    <section class="quick-filters" id="quickFilters">
+      <span class="quick-label">Quick view</span>
     </section>
 
     <section class="summary">
@@ -488,6 +822,17 @@
   <script>
     let data = { teams: [], groups: [], matches: [], errors: [], source: {} };
     let view = "standings";
+    const state = {
+      quick: "all",
+      favorites: new Set(JSON.parse(localStorage.getItem("fifa2026:favorites") || "[]"))
+    };
+    const quickViews = [
+      { id: "all", label: "All" },
+      { id: "today", label: "Today" },
+      { id: "next7", label: "Next 7 days" },
+      { id: "favorites", label: "Favorites" },
+      { id: "finished", label: "Finished" }
+    ];
     const $ = (id) => document.getElementById(id);
     const formatDate = (iso) => new Intl.DateTimeFormat(undefined, {
       weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit"
@@ -507,18 +852,66 @@
       return `<img class="logo" src="${team.logo}" alt="">`;
     }
 
+    function teamKey(team) {
+      return team?.abbr || team?.name || "";
+    }
+
+    function saveFavorites() {
+      localStorage.setItem("fifa2026:favorites", JSON.stringify([...state.favorites]));
+    }
+
+    function isFavorite(team) {
+      return state.favorites.has(teamKey(team));
+    }
+
+    function matchHasFavorite(match) {
+      return isFavorite(match.home) || isFavorite(match.away);
+    }
+
+    function isSameLocalDay(a, b) {
+      return a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate();
+    }
+
+    function groupForTeam(team) {
+      const key = teamKey(team);
+      const group = data.groups.find((item) => item.teams.some((row) => teamKey(row.team) === key));
+      return group?.name || "Group TBD";
+    }
+
+    function countdownTo(iso) {
+      const ms = new Date(iso) - new Date();
+      if (ms <= 0) return "Now";
+      const days = Math.floor(ms / 86400000);
+      const hours = Math.floor((ms % 86400000) / 3600000);
+      const mins = Math.floor((ms % 3600000) / 60000);
+      if (days > 0) return `${days}d ${hours}h`;
+      if (hours > 0) return `${hours}h ${mins}m`;
+      return `${Math.max(1, mins)}m`;
+    }
+
     function filteredMatches() {
       const term = $("search").value.trim().toLowerCase();
       const group = $("groupFilter").value;
       const status = $("statusFilter").value;
+      const now = new Date();
       return data.matches.filter((match) => {
+        const date = new Date(match.date);
         const haystack = [
           match.name, match.group, match.venue, match.city,
           match.home?.name, match.away?.name, match.home?.abbr, match.away?.abbr
         ].join(" ").toLowerCase();
+        const quickMatch =
+          state.quick === "all" ||
+          (state.quick === "today" && isSameLocalDay(date, now)) ||
+          (state.quick === "next7" && match.state === "pre" && date >= now && date <= new Date(now.getTime() + 7 * 86400000)) ||
+          (state.quick === "favorites" && matchHasFavorite(match)) ||
+          (state.quick === "finished" && match.state === "post");
         return (!term || haystack.includes(term)) &&
           (group === "all" || match.group === group) &&
-          (status === "all" || match.state === status);
+          (status === "all" || match.state === status) &&
+          quickMatch;
       });
     }
 
@@ -533,21 +926,74 @@
       $("matches").innerHTML = matches.map((match) => {
         const score = match.state === "pre" ? "vs" : `${match.away.score} - ${match.home.score}`;
         const tv = (match.broadcasts || []).slice(0, 3).join(" / ") || "TBA";
+        const favorite = matchHasFavorite(match);
         return `
-          <article class="match">
+          <article class="match ${favorite ? "favorite" : ""}">
             <div class="match-top">
               <span>${formatDate(match.date)}</span>
-              <span class="badge">${match.group || "World Cup"}</span>
+              <span class="match-tools">
+                <button class="star ${isFavorite(match.away) ? "active" : ""}" data-favorite-team="${teamKey(match.away)}" type="button" title="Toggle ${match.away.name}">+</button>
+                <button class="star ${isFavorite(match.home) ? "active" : ""}" data-favorite-team="${teamKey(match.home)}" type="button" title="Toggle ${match.home.name}">+</button>
+                <span class="badge">${match.group || "World Cup"}</span>
+              </span>
             </div>
             <div class="teams">
               <div class="team">${teamLogo(match.away)}<span class="team-name">${match.away.name || "TBD"}</span></div>
               <div class="score">${score}</div>
               <div class="team away"><span class="team-name">${match.home.name || "TBD"}</span>${teamLogo(match.home)}</div>
             </div>
-            <div class="venue">${match.status || "Scheduled"} · ${match.venue || "Venue TBA"}${match.city ? ", " + match.city : ""} · ${tv}</div>
+            <div class="venue">${match.status || "Scheduled"} · ${match.venue || "Venue TBA"}${match.city ? ", " + match.city : ""}</div>
+            <div class="match-footer">
+              <span class="pill">${tv}</span>
+              <span class="pill">${countdownTo(match.date)}</span>
+            </div>
           </article>
         `;
       }).join("");
+    }
+
+    function renderSpotlight() {
+      const now = new Date();
+      const next = data.matches.find((match) => match.state === "pre" && new Date(match.date) > now) || data.matches[0];
+      if (!next) {
+        $("spotlight").innerHTML = `<div class="empty">No spotlight match loaded.</div>`;
+        $("timeline").innerHTML = `<div class="empty">No upcoming matches.</div>`;
+        return;
+      }
+      const tv = (next.broadcasts || []).slice(0, 3).join(" / ") || "Broadcast TBA";
+      $("spotlight").innerHTML = `
+        <div class="spot-main">
+          <div class="spot-label">Next match spotlight</div>
+          <div class="spot-title">${next.away.name || "TBD"} vs ${next.home.name || "TBD"}</div>
+          <div class="spot-meta">${formatDate(next.date)} · ${next.group || "World Cup"} · ${next.venue || "Venue TBA"}${next.city ? ", " + next.city : ""}</div>
+          <div class="spot-teams">
+            <div class="spot-team">${teamLogo(next.away).replace("logo", "spot-logo")}<span class="spot-name">${next.away.name || "TBD"}</span></div>
+            <div class="spot-vs">VS</div>
+            <div class="spot-team home">${teamLogo(next.home).replace("logo", "spot-logo")}<span class="spot-name">${next.home.name || "TBD"}</span></div>
+          </div>
+        </div>
+        <div class="spot-side">
+          <div>
+            <div class="spot-label">Kickoff countdown</div>
+            <div class="countdown">${countdownTo(next.date)}</div>
+          </div>
+          <div class="spot-actions">
+            <span class="pill">${tv}</span>
+            <span class="pill">${next.status || "Scheduled"}</span>
+            <span class="pill">${groupForTeam(next.home)}</span>
+          </div>
+        </div>
+      `;
+
+      const upcoming = data.matches
+        .filter((match) => match.state === "pre" && new Date(match.date) >= now)
+        .slice(0, 5);
+      $("timeline").innerHTML = upcoming.map((match) => `
+        <div class="timeline-row">
+          <span>${compactTime(match.date)}</span>
+          <strong>${match.away.abbr || match.away.name} vs ${match.home.abbr || match.home.name}</strong>
+        </div>
+      `).join("") || `<div class="empty">No upcoming matches.</div>`;
     }
 
     function renderGroups() {
@@ -579,11 +1025,27 @@
       const term = $("search").value.trim().toLowerCase();
       const teams = data.teams.filter((team) => !term || [team.name, team.abbr].join(" ").toLowerCase().includes(term));
       $("teams").innerHTML = teams.map((team) => `
-        <div class="team-card">
+        <div class="team-card ${isFavorite(team) ? "favorite" : ""}">
+          <button class="star ${isFavorite(team) ? "active" : ""}" data-favorite-team="${teamKey(team)}" type="button" title="Toggle ${team.name}">+</button>
           ${team.logo ? `<img src="${team.logo}" alt="">` : ""}
           <strong>${team.name}</strong>
+          <small>${groupForTeam(team)}</small>
         </div>
       `).join("") || `<div class="empty">No teams match the current search.</div>`;
+    }
+
+    function renderQuickFilters() {
+      $("quickFilters").innerHTML = `<span class="quick-label">Quick view</span>` + quickViews.map((item) => `
+        <button class="quick-chip ${state.quick === item.id ? "active" : ""}" data-quick="${item.id}" type="button">${item.label}</button>
+      `).join("");
+    }
+
+    function renderFavorites() {
+      const favorites = [...state.favorites];
+      $("favoriteCount").textContent = favorites.length;
+      $("favoritePreview").innerHTML = favorites.length
+        ? favorites.slice(0, 6).map((abbr) => `<span class="pill">${abbr}</span>`).join("")
+        : `<span class="pill">No favorites yet</span>`;
     }
 
     function renderFilters() {
@@ -606,7 +1068,10 @@
 
     function render() {
       renderFilters();
+      renderQuickFilters();
       renderSummary();
+      renderSpotlight();
+      renderFavorites();
       renderMatches();
       renderGroups();
       renderTeams();
@@ -637,15 +1102,40 @@
       });
     });
 
+    $("quickFilters").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-quick]");
+      if (!button) return;
+      state.quick = button.dataset.quick;
+      render();
+    });
+
+    document.body.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-favorite-team]");
+      if (!button) return;
+      const key = button.dataset.favoriteTeam;
+      if (!key) return;
+      if (state.favorites.has(key)) state.favorites.delete(key);
+      else state.favorites.add(key);
+      saveFavorites();
+      render();
+    });
+
     ["search", "groupFilter", "statusFilter"].forEach((id) => {
       $(id).addEventListener("input", () => {
         renderMatches();
         renderGroups();
         renderTeams();
+        renderSpotlight();
       });
     });
     $("refresh").addEventListener("click", loadData);
     setInterval(updateClock, 1000);
+    setInterval(() => {
+      if (data.matches.length) {
+        renderSummary();
+        renderSpotlight();
+      }
+    }, 60000);
     updateClock();
     loadData();
   </script>

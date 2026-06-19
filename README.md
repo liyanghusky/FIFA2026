@@ -16,6 +16,8 @@ It starts a local Python server and opens:
 http://127.0.0.1:8766/
 ```
 
+If that port is already in use, the server automatically chooses the next available local port.
+
 You can also run it manually:
 
 ```bash
@@ -26,8 +28,10 @@ py server_worldcup.py
 
 - 48-team list
 - Group standings
+- Next-match spotlight with countdown
 - Match schedule with local kick-off times
 - Venue and broadcast labels when provided
-- Search, group filter, status filter and refresh
+- Favorite teams saved in the browser
+- Search, group filter, status filter, quick views and refresh
 
 Data is loaded through ESPN's public soccer endpoints, with official FIFA schedule and standings links included in the app metadata.
