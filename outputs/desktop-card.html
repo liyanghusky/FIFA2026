@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIFA 2026 Card</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8fbff;
+      --muted: #aab9c8;
+      --line: rgba(255, 255, 255, .16);
+      --glass: rgba(8, 17, 31, .76);
+      --gold: #f6c85f;
+      --aqua: #58d7ff;
+      --red: #ff6f7f;
+      --green: #43df95;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(88, 215, 255, .20), transparent 34%),
+        linear-gradient(315deg, rgba(246, 200, 95, .18), transparent 30%),
+        #07101f;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 34px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 34px);
+      mask-image: linear-gradient(to bottom, #000, transparent 92%);
+    }
+
+    button { font: inherit; }
+    .card {
+      width: min(390px, calc(100vw - 18px));
+      min-height: 470px;
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.055)), var(--glass);
+      box-shadow: 0 28px 90px rgba(0,0,0,.48);
+      backdrop-filter: blur(22px);
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(110deg, rgba(88, 215, 255, .16), transparent 40%);
+    }
+
+    .topbar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, var(--aqua), var(--gold), #fff, var(--aqua));
+      box-shadow: 0 0 18px rgba(88, 215, 255, .4);
+      flex: 0 0 auto;
+    }
+
+    .actions { display: flex; gap: 6px; }
+    .icon-button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      cursor: pointer;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 15px;
+      padding: 17px;
+    }
+
+    .label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 7px 0 0;
+      font-size: 31px;
+      line-height: .96;
+      font-weight: 950;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .meta {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .teams {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .team {
+      min-width: 0;
+      display: grid;
+      gap: 7px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,.35));
+    }
+
+    .team-name {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 1.12;
+      font-weight: 950;
+      overflow-wrap: anywhere;
+    }
+
+    .score {
+      min-height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      background: rgba(0,0,0,.19);
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .timebox {
+      min-height: 62px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      display: grid;
+      place-items: center;
+      padding: 7px 4px;
+    }
+
+    .timebox strong {
+      display: block;
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .timebox span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .details {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding-top: 8px;
+    }
+
+    .detail-row strong {
+      color: var(--ink);
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.065);
+      padding: 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(67,223,149,.8);
+      flex: 0 0 auto;
+    }
+
+    .error .live-dot { background: var(--red); box-shadow: 0 0 12px rgba(255,111,127,.8); }
+    .empty {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.45;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header class="topbar">
+      <div class="brand"><span class="mark"></span><span>FIFA 2026 Card</span></div>
+      <div class="actions">
+        <button class="icon-button" id="refresh" title="Refresh">R</button>
+        <button class="icon-button" id="full" title="Open full tracker">&gt;</button>
+      </div>
+    </header>
+    <section class="content" id="content">
+      <div class="empty">Loading matchday card...</div>
+    </section>
+  </main>
+
+  <script>
+    const content = document.getElementById("content");
+    const pad = (value) => String(value).padStart(2, "0");
+    let currentMatch = null;
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function formatDate(value) {
+      if (!value) return "Time TBA";
+      return new Intl.DateTimeFormat([], {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+      }).format(new Date(value));
+    }
+
+    function nextMatch(matches) {
+      const now = Date.now();
+      return (matches || []).find((match) => new Date(match.date).getTime() >= now)
+        || (matches || [])[0]
+        || null;
+    }
+
+    function countdownParts(value) {
+      const target = new Date(value).getTime();
+      let diff = Math.max(0, target - Date.now());
+      const days = Math.floor(diff / 86400000);
+      diff -= days * 86400000;
+      const hours = Math.floor(diff / 3600000);
+      diff -= hours * 3600000;
+      const minutes = Math.floor(diff / 60000);
+      diff -= minutes * 60000;
+      const seconds = Math.floor(diff / 1000);
+      return { days, hours, minutes, seconds };
+    }
+
+    function render(match, sourceText) {
+      if (!match) {
+        content.innerHTML = '<div class="empty">No upcoming match found yet.</div>';
+        return;
+      }
+      currentMatch = match;
+      const home = match.home || {};
+      const away = match.away || {};
+      const isLive = match.state === "in";
+      const score = isLive ? `${home.score || 0}-${away.score || 0}` : "VS";
+      const detail = match.detail || match.status || "Scheduled";
+      const city = [match.venue, match.city].filter(Boolean).join(", ") || "Venue TBA";
+      const broadcasts = (match.broadcasts || []).slice(0, 3).join(", ") || "Broadcast TBA";
+      const updated = sourceText || "ESPN public API";
+
+      content.innerHTML = `
+        <section>
+          <div class="label">${escapeHtml(isLive ? "Live now" : "Next match")}</div>
+          <h1 class="title">${escapeHtml(match.shortName || match.name || "World Cup Match")}</h1>
+          <div class="meta">${escapeHtml(formatDate(match.date))} &middot; ${escapeHtml(detail)}</div>
+          <div class="teams">
+            <div class="team">
+              ${home.logo ? `<img class="logo" alt="" src="${escapeHtml(home.logo)}">` : ""}
+              <div class="team-name">${escapeHtml(home.shortName || home.name || "Home")}</div>
+            </div>
+            <div class="score">${escapeHtml(score)}</div>
+            <div class="team">
+              ${away.logo ? `<img class="logo" alt="" src="${escapeHtml(away.logo)}">` : ""}
+              <div class="team-name">${escapeHtml(away.shortName || away.name || "Away")}</div>
+            </div>
+          </div>
+        </section>
+        <section class="countdown" id="countdown"></section>
+        <section class="details">
+          <div class="detail-row"><span>Stage</span><strong>${escapeHtml(match.group || "World Cup")}</strong></div>
+          <div class="detail-row"><span>Place</span><strong>${escapeHtml(city)}</strong></div>
+          <div class="detail-row"><span>TV</span><strong>${escapeHtml(broadcasts)}</strong></div>
+        </section>
+        <section class="status">
+          <span class="live-dot"></span>
+          <span>${escapeHtml(updated)}</span>
+        </section>
+      `;
+      renderCountdown();
+    }
+
+    function renderCountdown() {
+      if (!currentMatch) return;
+      const target = new Date(currentMatch.date).getTime();
+      const box = document.getElementById("countdown");
+      if (!box) return;
+      if (currentMatch.state === "in") {
+        box.innerHTML = '<div class="timebox" style="grid-column: 1 / -1"><strong>LIVE</strong><span>match in progress</span></div>';
+        return;
+      }
+      if (target <= Date.now()) {
+        box.innerHTML = '<div class="timebox" style="grid-column: 1 / -1"><strong>NOW</strong><span>check the tracker</span></div>';
+        return;
+      }
+      const parts = countdownParts(currentMatch.date);
+      box.innerHTML = `
+        <div class="timebox"><strong>${parts.days}</strong><span>days</span></div>
+        <div class="timebox"><strong>${pad(parts.hours)}</strong><span>hours</span></div>
+        <div class="timebox"><strong>${pad(parts.minutes)}</strong><span>mins</span></div>
+        <div class="timebox"><strong>${pad(parts.seconds)}</strong><span>secs</span></div>
+      `;
+    }
+
+    async function load() {
+      try {
+        content.classList.remove("error");
+        const response = await fetch("/api/worldcup", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        const match = nextMatch(payload.matches);
+        const stamp = payload.source && payload.source.generatedAt
+          ? `Updated ${new Date(payload.source.generatedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`
+          : "Updated just now";
+        render(match, stamp);
+      } catch (error) {
+        content.classList.add("error");
+        content.innerHTML = `
+          <div class="empty">
+            Could not load the card yet.<br>
+            ${escapeHtml(error.message || error)}
+          </div>
+        `;
+      }
+    }
+
+    document.getElementById("refresh").addEventListener("click", load);
+    document.getElementById("full").addEventListener("click", () => window.open("/", "_blank"));
+    setInterval(renderCountdown, 1000);
+    setInterval(load, 180000);
+    load();
+  </script>
+</body>
+</html>

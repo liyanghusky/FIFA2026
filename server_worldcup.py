@@ -258,6 +258,12 @@ def main():
     server = ThreadingHTTPServer((host, port), WorldCupHandler)
     print(f"World Cup Tracker running at {url}")
     print("Press Ctrl+C to stop.")
+    port_file = os.environ.get("WORLDCUP_PORT_FILE")
+    if port_file:
+        try:
+            Path(port_file).write_text(str(port), encoding="utf-8")
+        except OSError as exc:
+            print(f"Could not write port file: {exc}")
     if not public_port and os.environ.get("NO_BROWSER") != "1":
         webbrowser.open(url)
     try:
