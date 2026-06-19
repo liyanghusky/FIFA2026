@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: fifa2026
+    runtime: python
+    plan: free
+    buildCommand: "python --version"
+    startCommand: "python server_worldcup.py"

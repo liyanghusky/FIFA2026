@@ -232,13 +232,13 @@ class WorldCupHandler(SimpleHTTPRequestHandler):
         sys.stdout.write("%s - %s\n" % (self.address_string(), fmt % args))
 
 
-def find_port(start):
+def find_port(start, host=HOST):
     port = start
     while port < start + 50:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
-                sock.bind((HOST, port))
+                sock.bind((host, port))
             except OSError:
                 port += 1
                 continue
@@ -248,12 +248,18 @@ def find_port(start):
 
 def main():
     mimetypes.add_type("text/html; charset=utf-8", ".html")
-    port = find_port(int(os.environ.get("WORLDCUP_PORT", DEFAULT_PORT)))
-    url = f"http://{HOST}:{port}/"
-    server = ThreadingHTTPServer((HOST, port), WorldCupHandler)
+    public_port = os.environ.get("PORT")
+    host = os.environ.get("HOST", "0.0.0.0" if public_port else HOST)
+    port = int(public_port or os.environ.get("WORLDCUP_PORT", DEFAULT_PORT))
+    if not public_port:
+        port = find_port(port, host)
+    display_host = "127.0.0.1" if host == "0.0.0.0" else host
+    url = f"http://{display_host}:{port}/"
+    server = ThreadingHTTPServer((host, port), WorldCupHandler)
     print(f"World Cup Tracker running at {url}")
     print("Press Ctrl+C to stop.")
-    webbrowser.open(url)
+    if not public_port and os.environ.get("NO_BROWSER") != "1":
+        webbrowser.open(url)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

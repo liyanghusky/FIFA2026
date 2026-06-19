@@ -24,6 +24,17 @@ You can also run it manually:
 py server_worldcup.py
 ```
 
+## Deploy publicly
+
+This repo includes `render.yaml` for Render deployment.
+
+1. Go to Render and create a new Blueprint or Web Service from this GitHub repo.
+2. Use the default branch, `main`.
+3. Start command: `python server_worldcup.py`
+4. Render provides a public URL after deploy.
+
+The server uses Render's `PORT` environment variable and binds to `0.0.0.0` automatically when deployed.
+
 ## Features
 
 - 48-team list
