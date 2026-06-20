@@ -40,7 +40,8 @@ $xaml = @"
         Background="Transparent"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
-        Topmost="True">
+        ShowActivated="False"
+        Topmost="False">
   <Border CornerRadius="8"
           BorderThickness="1"
           BorderBrush="#35FFFFFF"
@@ -406,7 +407,8 @@ $window.Add_SourceInitialized({
   $style = [NativeWindowTools]::GetWindowLong($hwnd, -20)
   $WS_EX_TRANSPARENT = 0x20
   $WS_EX_TOOLWINDOW = 0x80
-  [NativeWindowTools]::SetWindowLong($hwnd, -20, $style -bor $WS_EX_TRANSPARENT -bor $WS_EX_TOOLWINDOW) | Out-Null
+  $WS_EX_NOACTIVATE = 0x08000000
+  [NativeWindowTools]::SetWindowLong($hwnd, -20, $style -bor $WS_EX_TRANSPARENT -bor $WS_EX_TOOLWINDOW -bor $WS_EX_NOACTIVATE) | Out-Null
 
   $area = [System.Windows.SystemParameters]::WorkArea
   $window.Left = $area.Right - $window.Width - 18
