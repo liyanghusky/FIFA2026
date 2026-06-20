@@ -10,3 +10,4 @@
 - Updated the local server to write the selected port to a file for launchers.
 - Added cleanup preference: helper apps opened during work should be backgrounded/minimized before handoff.
 - Changed the desktop widget to be non-topmost and non-activating so normal apps can cover it.
+- Added a hidden PowerShell launcher so the widget and local server start in the background without visible console windows.
