@@ -34,7 +34,7 @@ Add-Type -TypeDefinition $signature
 $xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Width="390" Height="360"
+        Width="420" Height="390"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -42,14 +42,14 @@ $xaml = @"
         ShowInTaskbar="False"
         ShowActivated="False"
         Topmost="False">
-  <Border CornerRadius="8"
-          BorderThickness="1"
-          BorderBrush="#35FFFFFF"
-          Background="#72071322"
-          Padding="14"
-          Opacity="0.88">
+  <Border CornerRadius="1"
+          BorderThickness="2"
+          BorderBrush="#A66E1717"
+          Background="#ED0B0B0C"
+          Padding="15"
+          Opacity="0.96">
     <Border.Effect>
-      <DropShadowEffect BlurRadius="22" ShadowDepth="0" Opacity="0.28" Color="#000000"/>
+      <DropShadowEffect BlurRadius="24" ShadowDepth="0" Opacity="0.55" Color="#000000"/>
     </Border.Effect>
     <Grid>
       <Grid.RowDefinitions>
@@ -61,8 +61,11 @@ $xaml = @"
       </Grid.RowDefinitions>
 
       <DockPanel Grid.Row="0">
-        <TextBlock Text="FIFA 2026" Foreground="#F6C85F" FontSize="11" FontWeight="Bold" DockPanel.Dock="Left"/>
-        <TextBlock x:Name="UpdatedText" Text="加载中" Foreground="#9FB0C2" FontSize="11" HorizontalAlignment="Right"/>
+        <StackPanel DockPanel.Dock="Left">
+          <TextBlock Text="HARKONNEN MATCH COMMAND" Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="15" FontWeight="Black"/>
+          <TextBlock Text="FIFA 2026 // FIELD INTELLIGENCE" Foreground="#9E7772" FontSize="9" FontWeight="Bold" Margin="0,3,0,0"/>
+        </StackPanel>
+        <TextBlock x:Name="UpdatedText" Text="加载中" Foreground="#D64335" FontFamily="Consolas" FontSize="11" FontWeight="Bold" HorizontalAlignment="Right"/>
       </DockPanel>
 
       <Grid x:Name="MatchGrid" Grid.Row="2">
@@ -72,35 +75,35 @@ $xaml = @"
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="8" Background="#22FFFFFF" BorderBrush="#22FFFFFF" BorderThickness="1" Padding="10">
+        <Border Grid.Column="0" CornerRadius="0" Background="#B3131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11">
           <StackPanel>
-            <TextBlock x:Name="NowLabel" Text="正在进行" Foreground="#58D7FF" FontSize="10" FontWeight="Bold"/>
-            <TextBlock x:Name="NowTitle" Text="暂无进行中比赛" Foreground="#F8FBFF" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
-            <TextBlock x:Name="NowMeta" Text="正在检查赛程" Foreground="#AAB9C8" FontSize="12" TextWrapping="Wrap" Margin="0,7,0,0"/>
+            <TextBlock x:Name="NowLabel" Text="正在进行" Foreground="#D64335" FontSize="10" FontWeight="Bold"/>
+            <TextBlock x:Name="NowTitle" Text="暂无进行中比赛" Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
+            <TextBlock x:Name="NowMeta" Text="正在检查赛程" Foreground="#9E8E87" FontSize="12" TextWrapping="Wrap" Margin="0,7,0,0"/>
           </StackPanel>
         </Border>
 
-        <Border Grid.Column="2" CornerRadius="8" Background="#22FFFFFF" BorderBrush="#22FFFFFF" BorderThickness="1" Padding="10">
+        <Border Grid.Column="2" CornerRadius="0" Background="#B3131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11">
           <StackPanel>
-            <TextBlock x:Name="NextLabel" Text="下一场" Foreground="#F6C85F" FontSize="10" FontWeight="Bold"/>
-            <TextBlock x:Name="NextTitle" Text="加载中..." Foreground="#F8FBFF" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
-            <TextBlock x:Name="NextMeta" Text="等待开球时间" Foreground="#AAB9C8" FontSize="12" TextWrapping="Wrap" Margin="0,7,0,0"/>
+            <TextBlock x:Name="NextLabel" Text="下一场" Foreground="#C9A35C" FontSize="10" FontWeight="Bold"/>
+            <TextBlock x:Name="NextTitle" Text="加载中..." Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
+            <TextBlock x:Name="NextMeta" Text="等待开球时间" Foreground="#9E8E87" FontSize="12" TextWrapping="Wrap" Margin="0,7,0,0"/>
           </StackPanel>
         </Border>
       </Grid>
 
-      <Border x:Name="TomorrowPanel" Grid.Row="2" CornerRadius="8" Background="#22FFFFFF" BorderBrush="#22FFFFFF" BorderThickness="1" Padding="10" Visibility="Collapsed">
+      <Border x:Name="TomorrowPanel" Grid.Row="2" CornerRadius="0" Background="#B3131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11" Visibility="Collapsed">
         <StackPanel>
-          <TextBlock Text="赛程" Foreground="#F6C85F" FontSize="10" FontWeight="Bold"/>
-          <TextBlock x:Name="TomorrowTitle" Text="明日赛程" Foreground="#F8FBFF" FontSize="17" FontWeight="Bold" Margin="0,6,0,8"/>
+          <TextBlock Text="MATCH QUEUE" Foreground="#D64335" FontSize="10" FontWeight="Bold"/>
+          <TextBlock x:Name="TomorrowTitle" Text="明日赛程" Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="17" FontWeight="Bold" Margin="0,6,0,8"/>
           <StackPanel x:Name="TomorrowList"/>
         </StackPanel>
       </Border>
 
-      <Border Grid.Row="4" CornerRadius="8" Background="#18FFFFFF" Padding="10,7">
+      <Border Grid.Row="4" CornerRadius="0" Background="#B1100D0E" BorderBrush="#7E5E2424" BorderThickness="1" Padding="10,7">
         <DockPanel>
-          <Ellipse Width="8" Height="8" Fill="#43DF95" DockPanel.Dock="Left" Margin="0,0,8,0"/>
-          <TextBlock x:Name="StatusText" Text="实时数据，鼠标可穿透" Foreground="#AAB9C8" FontSize="11"/>
+          <Ellipse Width="8" Height="8" Fill="#C72920" DockPanel.Dock="Left" Margin="0,0,8,0"/>
+          <TextBlock x:Name="StatusText" Text="实时数据，鼠标可穿透" Foreground="#9E7772" FontSize="11"/>
         </DockPanel>
       </Border>
     </Grid>
@@ -286,7 +289,7 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
   if (-not $gameList -or $gameList.Count -eq 0) {
     $empty = New-Object System.Windows.Controls.TextBlock
     $empty.Text = $emptyText
-    $empty.Foreground = "#AAB9C8"
+    $empty.Foreground = "#9E8E87"
     $empty.FontSize = 13
     $empty.Margin = "0,8,0,0"
     $tomorrowList.Children.Add($empty) | Out-Null
@@ -298,9 +301,9 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
     $isLive = $game.state -eq "in"
     $score = "$($game.home.score)-$($game.away.score)"
     $row = New-Object System.Windows.Controls.Border
-    $row.CornerRadius = "7"
-    $row.Background = if ($isLive) { "#3A58D7FF" } else { "#18FFFFFF" }
-    $row.BorderBrush = if ($isLive) { "#8858D7FF" } else { "#12FFFFFF" }
+    $row.CornerRadius = "0"
+    $row.Background = if ($isLive) { "#C03B1012" } else { "#B3131110" }
+    $row.BorderBrush = if ($isLive) { "#B8A82D28" } else { "#685C4B32" }
     $row.BorderThickness = "1"
     $row.Padding = "8,5"
     $row.Margin = "0,0,0,5"
@@ -315,7 +318,7 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
 
     $time = New-Object System.Windows.Controls.TextBlock
     $time.Text = if ($isLive) { "LIVE" } else { Format-CompactMatchTime $game.date }
-    $time.Foreground = if ($isLive) { "#58D7FF" } else { "#F6C85F" }
+    $time.Foreground = if ($isLive) { "#E44A3E" } else { "#C9A35C" }
     $time.FontSize = 12
     $time.FontWeight = [System.Windows.FontWeights]::Bold
     $time.VerticalAlignment = [System.Windows.VerticalAlignment]::Center
@@ -326,7 +329,8 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
 
     $name = New-Object System.Windows.Controls.TextBlock
     $name.Text = if ($isLive) { "$(Format-MatchName $game)  $score" } else { Format-MatchName $game }
-    $name.Foreground = "#F8FBFF"
+    $name.Foreground = "#F0E7DF"
+    $name.FontFamily = "Bahnschrift SemiCondensed, Segoe UI"
     $name.FontSize = 13
     $name.FontWeight = [System.Windows.FontWeights]::Bold
     $name.TextTrimming = [System.Windows.TextTrimming]::CharacterEllipsis
@@ -335,7 +339,7 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
     $venue = if ($game.venue) { [string]$game.venue } else { "场地待定" }
     $detail = if ($isLive -and $game.detail) { [string]$game.detail } elseif ($game.status) { [string]$game.status } else { "赛程待定" }
     $meta.Text = if ($isLive) { "比分 $score | $detail | $venue" } else { "$detail | $venue" }
-    $meta.Foreground = "#AAB9C8"
+    $meta.Foreground = "#9E8E87"
     $meta.FontSize = 11
     $meta.TextTrimming = [System.Windows.TextTrimming]::CharacterEllipsis
     $meta.Margin = "0,2,0,0"
