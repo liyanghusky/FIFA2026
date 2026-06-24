@@ -45,29 +45,35 @@ $xaml = @"
         ShowInTaskbar="False"
         ShowActivated="True"
         Topmost="False">
-  <Border CornerRadius="20"
-          BorderThickness="1"
-          Padding="15"
-          Opacity="0.86">
-    <Border.BorderBrush>
-      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#667B4A4A" Offset="0"/>
-        <GradientStop Color="#286A5555" Offset="0.42"/>
-        <GradientStop Color="#10503A3A" Offset="0.68"/>
-        <GradientStop Color="#5C5F2929" Offset="1"/>
-      </LinearGradientBrush>
-    </Border.BorderBrush>
-    <Border.Background>
-      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#841B1518" Offset="0"/>
-        <GradientStop Color="#660B0B0D" Offset="0.52"/>
-        <GradientStop Color="#4A211619" Offset="1"/>
-      </LinearGradientBrush>
-    </Border.Background>
-    <Border.Effect>
-      <DropShadowEffect BlurRadius="42" ShadowDepth="0" Opacity="0.30" Color="#5E1717"/>
-    </Border.Effect>
-    <Grid>
+  <Border Background="Transparent" BorderThickness="0" Padding="18">
+    <Grid Opacity="0.99">
+      <Canvas IsHitTestVisible="False">
+        <Canvas.OpacityMask>
+          <RadialGradientBrush Center="0.5,0.52" GradientOrigin="0.48,0.48" RadiusX="0.72" RadiusY="0.62">
+            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+            <GradientStop Color="#FFFFFFFF" Offset="0.42"/>
+            <GradientStop Color="#B8FFFFFF" Offset="0.62"/>
+            <GradientStop Color="#30FFFFFF" Offset="0.82"/>
+            <GradientStop Color="#00FFFFFF" Offset="1"/>
+          </RadialGradientBrush>
+        </Canvas.OpacityMask>
+        <Rectangle Canvas.Left="20" Canvas.Top="24" Width="364" Height="318" RadiusX="34" RadiusY="34" Fill="#B2050506">
+          <Rectangle.Effect><BlurEffect Radius="58"/></Rectangle.Effect>
+        </Rectangle>
+        <Ellipse Canvas.Left="14" Canvas.Top="14" Width="350" Height="166" Fill="#30F1EADB">
+          <Ellipse.Effect><BlurEffect Radius="72"/></Ellipse.Effect>
+        </Ellipse>
+        <Ellipse Canvas.Left="92" Canvas.Top="126" Width="308" Height="206" Fill="#8C040405">
+          <Ellipse.Effect><BlurEffect Radius="88"/></Ellipse.Effect>
+        </Ellipse>
+        <Polygon Points="8,112 118,40 246,70 420,30 430,174 298,226 122,210" Fill="#24F1EADB">
+          <Polygon.Effect><BlurEffect Radius="54"/></Polygon.Effect>
+        </Polygon>
+        <Ellipse Canvas.Left="264" Canvas.Top="220" Width="154" Height="110" Fill="#72030103">
+          <Ellipse.Effect><BlurEffect Radius="96"/></Ellipse.Effect>
+        </Ellipse>
+      </Canvas>
+      <Grid Margin="10">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="8"/>
@@ -122,6 +128,7 @@ $xaml = @"
           <TextBlock x:Name="StatusText" Text="实时数据，按住空白区域拖动" Foreground="#9E7772" FontSize="11"/>
         </DockPanel>
       </Border>
+      </Grid>
     </Grid>
   </Border>
 </Window>
