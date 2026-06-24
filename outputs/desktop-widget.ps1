@@ -37,7 +37,7 @@ Add-Type -TypeDefinition $signature
 $xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Width="420" Height="390"
+        Width="440" Height="390"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -45,26 +45,27 @@ $xaml = @"
         ShowInTaskbar="False"
         ShowActivated="True"
         Topmost="False">
-  <Border CornerRadius="12"
-          BorderThickness="2"
+  <Border CornerRadius="20"
+          BorderThickness="1"
           Padding="15"
-          Opacity="0.91">
+          Opacity="0.86">
     <Border.BorderBrush>
       <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#B8793737" Offset="0"/>
-        <GradientStop Color="#706A5555" Offset="0.48"/>
-        <GradientStop Color="#A43F1717" Offset="1"/>
+        <GradientStop Color="#667B4A4A" Offset="0"/>
+        <GradientStop Color="#286A5555" Offset="0.42"/>
+        <GradientStop Color="#10503A3A" Offset="0.68"/>
+        <GradientStop Color="#5C5F2929" Offset="1"/>
       </LinearGradientBrush>
     </Border.BorderBrush>
     <Border.Background>
       <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#D7161214" Offset="0"/>
-        <GradientStop Color="#C40A0A0C" Offset="0.55"/>
-        <GradientStop Color="#A91A1113" Offset="1"/>
+        <GradientStop Color="#841B1518" Offset="0"/>
+        <GradientStop Color="#660B0B0D" Offset="0.52"/>
+        <GradientStop Color="#4A211619" Offset="1"/>
       </LinearGradientBrush>
     </Border.Background>
     <Border.Effect>
-      <DropShadowEffect BlurRadius="28" ShadowDepth="0" Opacity="0.42" Color="#120000"/>
+      <DropShadowEffect BlurRadius="42" ShadowDepth="0" Opacity="0.30" Color="#5E1717"/>
     </Border.Effect>
     <Grid>
       <Grid.RowDefinitions>
@@ -90,7 +91,7 @@ $xaml = @"
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="7" Background="#96131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11">
+        <Border Grid.Column="0" CornerRadius="12" Background="#58131110" BorderBrush="#405C4B32" BorderThickness="1" Padding="11">
           <StackPanel>
             <TextBlock x:Name="NowLabel" Text="正在进行" Foreground="#D64335" FontSize="10" FontWeight="Bold"/>
             <TextBlock x:Name="NowTitle" Text="暂无进行中比赛" Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
@@ -98,7 +99,7 @@ $xaml = @"
           </StackPanel>
         </Border>
 
-        <Border Grid.Column="2" CornerRadius="7" Background="#96131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11">
+        <Border Grid.Column="2" CornerRadius="12" Background="#58131110" BorderBrush="#405C4B32" BorderThickness="1" Padding="11">
           <StackPanel>
             <TextBlock x:Name="NextLabel" Text="下一场" Foreground="#C9A35C" FontSize="10" FontWeight="Bold"/>
             <TextBlock x:Name="NextTitle" Text="加载中..." Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
@@ -107,7 +108,7 @@ $xaml = @"
         </Border>
       </Grid>
 
-      <Border x:Name="TomorrowPanel" Grid.Row="2" CornerRadius="7" Background="#96131110" BorderBrush="#685C4B32" BorderThickness="1" Padding="11" Visibility="Collapsed">
+      <Border x:Name="TomorrowPanel" Grid.Row="2" CornerRadius="12" Background="#58131110" BorderBrush="#405C4B32" BorderThickness="1" Padding="11" Visibility="Collapsed">
         <StackPanel>
           <TextBlock Text="MATCH QUEUE" Foreground="#D64335" FontSize="10" FontWeight="Bold"/>
           <TextBlock x:Name="TomorrowTitle" Text="明日赛程" Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="17" FontWeight="Bold" Margin="0,6,0,8"/>
@@ -115,7 +116,7 @@ $xaml = @"
         </StackPanel>
       </Border>
 
-      <Border Grid.Row="4" CornerRadius="7" Background="#8A100D0E" BorderBrush="#7E5E2424" BorderThickness="1" Padding="10,7">
+      <Border Grid.Row="4" CornerRadius="12" Background="#4A100D0E" BorderBrush="#485E3434" BorderThickness="1" Padding="10,7">
         <DockPanel>
           <Ellipse Width="8" Height="8" Fill="#C72920" DockPanel.Dock="Left" Margin="0,0,8,0"/>
           <TextBlock x:Name="StatusText" Text="实时数据，按住空白区域拖动" Foreground="#9E7772" FontSize="11"/>
@@ -316,9 +317,9 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
     $isLive = $game.state -eq "in"
     $score = "$($game.home.score)-$($game.away.score)"
     $row = New-Object System.Windows.Controls.Border
-    $row.CornerRadius = "6"
-    $row.Background = if ($isLive) { "#C03B1012" } else { "#B3131110" }
-    $row.BorderBrush = if ($isLive) { "#B8A82D28" } else { "#685C4B32" }
+    $row.CornerRadius = "10"
+    $row.Background = if ($isLive) { "#703B1012" } else { "#5A131110" }
+    $row.BorderBrush = if ($isLive) { "#70A82D28" } else { "#405C4B32" }
     $row.BorderThickness = "1"
     $row.Padding = "8,5"
     $row.Margin = "0,0,0,5"
