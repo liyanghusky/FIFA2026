@@ -107,7 +107,7 @@ $xaml = @"
 
         <Border Grid.Column="2" CornerRadius="12" Background="#58131110" BorderBrush="#405C4B32" BorderThickness="1" Padding="11">
           <StackPanel>
-            <TextBlock x:Name="NextLabel" Text="下一场" Foreground="#C9A35C" FontSize="10" FontWeight="Bold"/>
+            <TextBlock x:Name="NextLabel" Text="下一场" Foreground="#EEEAE4" FontSize="10" FontWeight="Bold"/>
             <TextBlock x:Name="NextTitle" Text="加载中..." Foreground="#F0E7DF" FontFamily="Bahnschrift SemiCondensed" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,6,0,0"/>
             <TextBlock x:Name="NextMeta" Text="等待开球时间" Foreground="#9E8E87" FontSize="12" TextWrapping="Wrap" Margin="0,7,0,0"/>
           </StackPanel>
@@ -341,7 +341,7 @@ function Render-MatchList($label, $titleDate, $gameList, $emptyText, $statusPref
 
     $time = New-Object System.Windows.Controls.TextBlock
     $time.Text = if ($isLive) { "LIVE" } else { Format-CompactMatchTime $game.date }
-    $time.Foreground = if ($isLive) { "#E44A3E" } else { "#C9A35C" }
+    $time.Foreground = if ($isLive) { "#E44A3E" } else { "#EEEAE4" }
     $time.FontSize = 12
     $time.FontWeight = [System.Windows.FontWeights]::Bold
     $time.VerticalAlignment = [System.Windows.VerticalAlignment]::Center
